@@ -1,0 +1,48 @@
+.debug{
+    border: 1px solid red;
+}
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300; 
+}
+
+p{
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+/* header */
+header{
+    height: 10%;
+    width: 100%;
+}
+
+h1{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 800;
+}
+
+/* main */
+main{
+    height: 82%;
+    background-color: #7fffd4;
+}
+
+#container-campo{
+    width: 80%;
+    height: 80%;
+}
+
+#container-campo, .box{
+    border: 1px solid black;
+}
+
+.box{
+    flex-basis: calc(100% /10);
+}
+
+/* footer */
+footer{
+    height: 8%;
+}
