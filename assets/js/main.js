@@ -24,17 +24,26 @@ function createMyElement(typeOfElement, nameOfClass, innerElement){
     //la funzione quando chiamata mi restituirà l'elemento creato con tutte le caratteristiche specificate dai parametri
     return elemento
 }
- //test funzione "createMyElement"
-console.log(createMyElement('div', 'row', 'ciao'))
 
-//salvo in una costante il button
-let button = document.querySelector('button')
-console.log(button)
+//test funzione "createMyElement"
+// console.log(createMyElement('div', 'row', 'ciao'))
+
+//salvo in una costante il button Reload
+const buttonReload = document.querySelector('#buttonReload')
+
+//salvo in una costante il button Play
+const button = document.querySelector('#buttonPlay')
+// console.log(button)
+
 
 //associo al button una funzione che mi genera la griglia con le funzionalità richieste
 button.addEventListener('click', function(){
-    //faccio partire un ciclo che mi generi i 100 elementi nel DOM
-    for(let i = 1; i <=100; i++){
+    //salvo in una variabile l'informazione delle select
+    let level = parseInt(document.querySelector('#level').value)
+    //scrivo delle condizioni in base al livello di difficoltà selezionato
+    if(level == 1){
+        //faccio partire un ciclo che mi generi i 100 elementi nel DOM
+        for(let i = 1; i <=100; i++){
         //trovo l'elemento dove stampare
         let containerCampo = document.querySelector('#container-campo')
 
@@ -47,4 +56,50 @@ button.addEventListener('click', function(){
             console.log(i)
         })
     }
+    } else if(level == 2){
+        //faccio partire un ciclo che mi generi gli 81 elementi nel DOM
+        for(let i = 1; i <=81; i++){
+        //trovo l'elemento dove stampare
+        let containerCampo = document.querySelector('#container-campo')
+
+        //stampo dentro l'elemento i div che associo ad una variabile "divBox"
+        const divBox = containerCampo.appendChild(createMyElement('div', 'box-9', i))
+
+        //rendo cliccabili tutti gli elementi
+        divBox.addEventListener('click', function(){
+            this.classList.toggle('blue')
+            console.log(i)
+        })
+    }
+    } else if(level == 3){
+        //faccio partire un ciclo che mi generi i 49 elementi nel DOM
+        for(let i = 1; i <=49; i++){
+        //trovo l'elemento dove stampare
+        let containerCampo = document.querySelector('#container-campo')
+
+        //stampo dentro l'elemento i div che associo ad una variabile "divBox"
+        const divBox = containerCampo.appendChild(createMyElement('div', 'box-7', i))
+
+        //rendo cliccabili tutti gli elementi
+        divBox.addEventListener('click', function(){
+            this.classList.toggle('blue')
+            console.log(i)
+        })
+    }
+    }
+
+    //faccio scomparire il pulsante Play 
+    button.classList.add('d-none')
+    //faccio comparire il pulsante Reload
+    buttonReload.className = 'd-block'
+    //assegno lo stile al pulsante Reload
+    buttonReload.classList.add('btn', 'btn-danger', 'py-1', 'px-5')
 })
+
+
+// creo una funzione che mi ricarichi la pagina e la associo al button Reload
+buttonReload.addEventListener('click', function(){
+    window.location.reload()
+})
+
+
