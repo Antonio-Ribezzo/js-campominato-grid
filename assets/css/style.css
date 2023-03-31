@@ -12,6 +12,10 @@ p{
     margin: 0;
 }
 
+.blue{
+    background-color: blue;
+}
+
 /* header */
 header{
     height: 10%;
@@ -33,13 +37,26 @@ main{
     width: 80%;
     height: 80%;
 }
-
-#container-campo, .box{
+ 
+.box-10,
+.box-9,
+.box-7{
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.box{
+.box-10{
     flex-basis: calc(100% /10);
+}
+
+.box-9{
+    flex-basis: calc(100% /9);
+}
+
+.box-7{
+    flex-basis: calc(100% /7);
 }
 
 /* footer */
