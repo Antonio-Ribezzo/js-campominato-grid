@@ -11,8 +11,6 @@ BONUS
     - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 */
 
-
-
 // Genero una funzione che mi crei un elemento nel DOM (decido io di che tipo, con quale classe e con quale informazione al suo interno)
 function createMyElement(typeOfElement, nameOfClass, innerElement){
     //associo ad una variabile l'elemento creato
@@ -25,9 +23,9 @@ function createMyElement(typeOfElement, nameOfClass, innerElement){
     return elemento
 }
 
-//test funzione "createMyElement"
-// console.log(createMyElement('div', 'row', 'ciao'))
-
+//salvo in una variabile la select
+const select1 = document.querySelector('#labelLevel')
+const select2 = document.querySelector('select')
 //salvo in una costante il button Reload
 const buttonReload = document.querySelector('#buttonReload')
 
@@ -35,67 +33,36 @@ const buttonReload = document.querySelector('#buttonReload')
 const button = document.querySelector('#buttonPlay')
 // console.log(button)
 
+//trovo l'elemento dove stampare
+let containerCampo = document.querySelector('#container-campo')
 
 //associo al button una funzione che mi genera la griglia con le funzionalità richieste
 button.addEventListener('click', function(){
     //salvo in una variabile l'informazione delle select
     let level = parseInt(document.querySelector('#level').value)
-    //scrivo delle condizioni in base al livello di difficoltà selezionato
-    if(level == 1){
-        //faccio partire un ciclo che mi generi i 100 elementi nel DOM
-        for(let i = 1; i <=100; i++){
-        //trovo l'elemento dove stampare
-        let containerCampo = document.querySelector('#container-campo')
+    // salvo in una variabile il numero corrispondente al numero di elementi per ogni riga in base al livello
+    numLevel = Math.sqrt(level)
 
-        //stampo dentro l'elemento i div che associo ad una variabile "divBox"
-        const divBox = containerCampo.appendChild(createMyElement('div', 'box-10', i))
-
+    //faccio partire un ciclo che mi generi gli elementi nel DOM
+    for(let i = 1; i <=level; i++){
+        //stampo dentro l'elemento i div che associo ad una variabile"divBox"
+        const divBox = containerCampo.appendChild(createMyElement('div', `box-${numLevel}`, i))
         //rendo cliccabili tutti gli elementi
         divBox.addEventListener('click', function(){
-            this.classList.toggle('blue')
-            console.log(i)
-        })
-    }
-    } else if(level == 2){
-        //faccio partire un ciclo che mi generi gli 81 elementi nel DOM
-        for(let i = 1; i <=81; i++){
-        //trovo l'elemento dove stampare
-        let containerCampo = document.querySelector('#container-campo')
-
-        //stampo dentro l'elemento i div che associo ad una variabile "divBox"
-        const divBox = containerCampo.appendChild(createMyElement('div', 'box-9', i))
-
-        //rendo cliccabili tutti gli elementi
-        divBox.addEventListener('click', function(){
-            this.classList.toggle('blue')
-            console.log(i)
-        })
-    }
-    } else if(level == 3){
-        //faccio partire un ciclo che mi generi i 49 elementi nel DOM
-        for(let i = 1; i <=49; i++){
-        //trovo l'elemento dove stampare
-        let containerCampo = document.querySelector('#container-campo')
-
-        //stampo dentro l'elemento i div che associo ad una variabile "divBox"
-        const divBox = containerCampo.appendChild(createMyElement('div', 'box-7', i))
-
-        //rendo cliccabili tutti gli elementi
-        divBox.addEventListener('click', function(){
-            this.classList.toggle('blue')
-            console.log(i)
-        })
-    }
-    }
+        this.classList.toggle('blue')
+        console.log(this.innerText)
+    })}
 
     //faccio scomparire il pulsante Play 
     button.classList.add('d-none')
+    //faccio scomparire la select
+    select1.classList.add('d-none')
+    select2.classList.add('d-none')
     //faccio comparire il pulsante Reload
     buttonReload.className = 'd-block'
     //assegno lo stile al pulsante Reload
     buttonReload.classList.add('btn', 'btn-danger', 'py-1', 'px-5')
 })
-
 
 // creo una funzione che mi ricarichi la pagina e la associo al button Reload
 buttonReload.addEventListener('click', function(){

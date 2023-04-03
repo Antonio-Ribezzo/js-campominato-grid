@@ -7,7 +7,7 @@
     font-weight: 300; 
 }
 
-p{
+span{
     font-size: 1.3rem;
     margin: 0;
 }
@@ -34,8 +34,8 @@ main{
 }
 
 #container-campo{
-    width: 80%;
-    height: 80%;
+    width: 40rem;
+    height: 40rem;
 }
  
 .box-10,
